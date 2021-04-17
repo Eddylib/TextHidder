@@ -4,5 +4,5 @@ function [ data ] = read_from_file( filename )
     fid = fopen(filename,'r','n','UTF-8');
     data = fread(fid)';
     data = native2unicode(data,'UTF-8');
-    #write_to_file('result.txt',data);
+    write_to_file('result.txt',data);
 end

@@ -1,6 +1,6 @@
 function [ data,img_reconstructed ] = extract(embaded)
-%EXTRACT 此处显示有关此函数的摘要
-%   此处显示详细说明
+%EXTRACT 姝ゅ鏄剧ず鏈夊叧姝ゅ嚱鏁扮殑鎽樿
+%   姝ゅ鏄剧ず璇︾粏璇存槑
     LS = liftwave('cdf2.2','Int2Int');
     [CA,CH,CV,CD] = lwt2(embaded,LS);
     [~,wori] = size(CH);

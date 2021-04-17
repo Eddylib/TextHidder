@@ -1,16 +1,16 @@
 function [ img_embaded,S] = embaded(img,data,draw_band_histogram)
-%EMBADED ´Ë´¦ÏÔÊ¾ÓÐ¹Ø´Ëº¯ÊýµÄÕªÒª
-%   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+%EMBADED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤å‡½æ•°çš„æ‘˜è¦
+%   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜Ž
     LS = liftwave('cdf2.2','Int2Int');
     [CA,CH,CV,CD] = lwt2(img,LS);
-    %°ÑÊý¾Ý²ØÔÚCH,CV,CDºÏ²¢ÆðÀ´µÄ²¨¶ÎÀï
+    %æŠŠæ•°æ®è—åœ¨CH,CV,CDåˆå¹¶èµ·æ¥çš„æ³¢æ®µé‡Œ
     mat_merged = [CH,CV,CD];
     [~,wori] = size(CH);
     [h_band,w_band] = size(mat_merged);
     data = strcat(data,[char(65535),char(65535)]);
     M = length(data)*16;
-    %ÎªÁË¸øÆðÊ¼±êÖ¾Î»Áô³ö¿Õ¼ä£¬¼Ù¶¨Êý¾Ý¶¼ÔÚ-20~20²¨¶ÎÄÚ
-    %¹æ¶¨Êý¾Ý²»¿É³¬³ö×î´ó¿Õ¼ä¼õÈ¥Ô¤ÁôÎ»
+    %ä¸ºäº†ç»™èµ·å§‹æ ‡å¿—ä½ç•™å‡ºç©ºé—´ï¼Œå‡å®šæ•°æ®éƒ½åœ¨-20~20æ³¢æ®µå†…
+    %è§„å®šæ•°æ®ä¸å¯è¶…å‡ºæœ€å¤§ç©ºé—´å‡åŽ»é¢„ç•™ä½
     MaxSpace = w_band * h_band - 64*40;
     T = 3;
     if(M > w_band * h_band)
@@ -68,9 +68,9 @@ function [ mat_emb,bitidx ] = embaded_one_shift(mat_emb,data,bitidx,Z)
             for jj = 1:w
                 if(mat_emb(ii,jj) == Z)
                     if(cnt < 64)
-                        %Ç°64bitÓÃÀ´´æ´¢prefix£¬¸øextract³ÌÐòÌáÊ¾SµÄÎ»ÖÃ
-                        %ÕâÀïÈ«²¿ÉèÖÃÎªÈ«0£¬µ±½áÊøÊ±£¬embaded»áÔÚÏàÓ¦µÄ
-                        %Z´¦½«ÕâÀïÈ«ÖÃÎª01Ïà¼äµÄÐòÁÐ´Ó¶ø´ïµ½Ä¿µÄ
+                        %å‰64bitç”¨æ¥å­˜å‚¨prefixï¼Œç»™extractç¨‹åºæç¤ºSçš„ä½ç½®
+                        %è¿™é‡Œå…¨éƒ¨è®¾ç½®ä¸ºå…¨0ï¼Œå½“ç»“æŸæ—¶ï¼Œembadedä¼šåœ¨ç›¸åº”çš„
+                        %Zå¤„å°†è¿™é‡Œå…¨ç½®ä¸º01ç›¸é—´çš„åºåˆ—ä»Žè€Œè¾¾åˆ°ç›®çš„
                         cnt = cnt + 1;
                         continue
                     else
@@ -98,9 +98,9 @@ function [mat_emb] = set_end_mark(mat_emb,Z)
         for jj = 1:w
             if(mat_emb(ii,jj) == Z)
                 if(cnt < 16)
-                    %Ç°64bitÓÃÀ´´æ´¢prefix£¬¸øextract³ÌÐòÌáÊ¾SµÄÎ»ÖÃ
-                    %ÕâÀïÈ«²¿ÉèÖÃÎªÈ«0£¬µ±½áÊøÊ±£¬embaded»áÔÚÏàÓ¦µÄ
-                    %Z´¦½«ÕâÀïÈ«ÖÃÎª1´Ó¶ø´ïµ½Ä¿µÄ
+                    %å‰64bitç”¨æ¥å­˜å‚¨prefixï¼Œç»™extractç¨‹åºæç¤ºSçš„ä½ç½®
+                    %è¿™é‡Œå…¨éƒ¨è®¾ç½®ä¸ºå…¨0ï¼Œå½“ç»“æŸæ—¶ï¼Œembadedä¼šåœ¨ç›¸åº”çš„
+                    %Zå¤„å°†è¿™é‡Œå…¨ç½®ä¸º1ä»Žè€Œè¾¾åˆ°ç›®çš„
                     if(mod(cnt,2) == 1)
                         mat_emb(ii,jj) = Z + sign(Z);
                     end

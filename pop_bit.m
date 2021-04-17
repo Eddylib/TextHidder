@@ -1,6 +1,6 @@
 function [ bit] = pop_bit( str,bitidx )
-%STR2BIN 此处显示有关此函数的摘要
-%   此处显示详细说明
+%STR2BIN 姝ゅ鏄剧ず鏈夊叧姝ゅ嚱鏁扮殑鎽樿
+%   姝ゅ鏄剧ず璇︾粏璇存槑
      charidx = floor(bitidx/16)+1;
      bitidx_ = 15-mod(bitidx,16);
      char_ = int32(str(int32(charidx)));
